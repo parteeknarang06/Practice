@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Define your beans here -->
+	<bean id="fortuneService" class="com.springcore.workers.impl.HappyFortuneService" 
+		init-method="doStart" destroy-method="doEnd" scope="prototype"/>
+		
+	<bean id="cricketCoach" class="com.springcore.workers.impl.CricketCoach" 
+		init-method="doStart" destroy-method="doEnd">
+		<!-- setter injection of literals -->
+		<property name="email" value="parteeknarang06@gmail.com" />
+		<property name="Team" value="Sunrisers Hydrabad" />
+		<!-- setter injection of object -->
+		<property name="fortuneService" ref="fortuneService" />
+	</bean>
+	
+	<bean id="cricketTeam" class="com.springcore.workers.impl.CricketTeam"
+		init-method="doStart" destroy-method="doEnd">
+		<!-- setter injection of property file literals -->
+		<property name="TeamName" value="${foo.name}"/>
+		<property name="CountryName" value="${foo.country}"/>
+	</bean>
+	
+	<context:property-placeholder location="classpath:sports.properties"/>
+</beans>
+
+
+
+
+

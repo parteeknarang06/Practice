@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC Connections settings -->
+		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		
+		<!-- JDBC Pool setting -->
+		<property name="connection.pool_size">20</property>
+		
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+		
+		<!-- Show sql -->
+		<property name="show_sql">true</property>
+		
+		<!-- Current session context -->
+		<property name="current_session_context_class">thread</property>
+		
+		<!-- 2nd level cache -->
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+		
+	</session-factory>
+</hibernate-configuration>
