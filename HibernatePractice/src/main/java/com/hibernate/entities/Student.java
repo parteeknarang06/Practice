@@ -1,5 +1,7 @@
 package com.hibernate.entities;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
@@ -18,20 +20,20 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-@Table(name = "student", schema = "tracker")
+@Table(name = "student", schema = "hb_01_one_to_one_uni")
 public class Student {
 
   private Integer id;
   private String firstName;
   private String lastName;
   private String email;
-  private Date dob;
-  
+  private Calendar dob;
+
   public Student() {
     // Hibernate use default constructor
   }
-  
-  public Student(String firstName, String lastName, String email, Date dob) {
+
+  public Student(String firstName, String lastName, String email, Calendar dob) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -76,13 +78,13 @@ public class Student {
     this.email = email;
   }
 
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   @Column(name = "date_of_birth")
-  public Date getDob() {
+  public Calendar getDob() {
     return dob;
   }
 
-  public void setDob(Date dob) {
+  public void setDob(Calendar dob) {
     this.dob = dob;
   }
 
@@ -91,5 +93,5 @@ public class Student {
     return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", dob="
         + dob + "]";
   }
-  
+
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +35,9 @@ public class CustomerController {
   public String processForm(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
     System.out.println("last name: |" + customer.getLastName() + "|");
     System.out.println("bindingResult:" + bindingResult);
+    bindingResult.getFieldErrors().forEach(ele->{
+    	System.out.println(ele.getField());
+    });
     if (bindingResult.hasErrors()) {
       return CommonUtil.CUSTOMER_FORM;
     }

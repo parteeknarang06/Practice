@@ -5,11 +5,21 @@ import com.springboot.controller.service.EmployeeSecurityService;
 import com.springboot.controller.service.EmployeeService;
 import com.springboot.dao.entity.Employee;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +27,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -56,7 +67,7 @@ public class EmployeeRestController {
   }
 
   @PutMapping("/employees")
-  public Employee updateEmployee(@RequestBody Employee employee) {
+  public Employee updateEmployee(@Valid @RequestBody Employee employee) {
     employeeService.saveEmployee(employee);
     return employee;
   }
@@ -75,10 +86,11 @@ public class EmployeeRestController {
   public String findEmailById(@PathVariable int employeeId) {
     return employeeRestService.findbById(employeeId);
   }
-  
+
   @RequestMapping(value = "/employee/startSecurityDevice", method = RequestMethod.POST)
   public String startSecurityDevice() {
     return employeeSecurityService.startDevice();
   }
 
+  
 }
