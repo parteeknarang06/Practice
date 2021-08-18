@@ -6,7 +6,7 @@
 	<session-factory>
 		<!-- JDBC Connections settings -->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
-		<property name="connection.url">jdbc:postgresql://localhost:5432/hb_mapping?currentSchema=hb_01_one_to_one_uni</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5432/hb_mapping</property>
 		<property name="connection.username">postgres</property>
 		<property name="connection.password">test123</property>
 		

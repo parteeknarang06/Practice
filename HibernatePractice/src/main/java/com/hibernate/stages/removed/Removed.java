@@ -1,4 +1,4 @@
-package com.hibernate.stages;
+package com.hibernate.stages.removed;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

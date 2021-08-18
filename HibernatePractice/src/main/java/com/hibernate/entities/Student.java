@@ -1,8 +1,6 @@
 package com.hibernate.entities;
 
-import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
@@ -20,7 +18,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-@Table(name = "student", schema = "hb_01_one_to_one_uni")
+@Table(name = "student", schema = "stages")
 public class Student {
 
   private Integer id;

@@ -1,4 +1,4 @@
-package com.hibernate.stages;
+package com.hibernate.stages.detached;
 
 import java.util.Calendar;
 
